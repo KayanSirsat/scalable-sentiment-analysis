@@ -17,19 +17,28 @@ The focus is on **robust baseline modeling, proper evaluation and low-latency in
 
 A standard benchmark dataset (IMDb Reviews) is used as a **proxy for customer sentiment classification** to ensure reliable training and evaluation.
 
+---
 
-### 🏗️ Architecture Design
-To ensure both **scalability** for big data and **low latency** for end-users, this project utilizes a hybrid approach:
+## Architecture Design
 
-1.  **Offline Training Layer (The "Kitchen"):**
-    * **Tech:** Apache Spark (PySpark)
-    * **Role:** Handles massive datasets (GBs/TBs) using distributed computing. It performs tokenization, HashingTF, and logistic regression training on a cluster.
-    * **File:** `spark_pipeline.py`
-    
-2.  **Online Inference Layer (The "Delivery"):**
-    * **Tech:** Scikit-Learn & Streamlit
-    * **Role:** A lightweight, low-latency web application that mimics the trained logic to serve predictions to users in milliseconds.
-    * **File:** `app.py`
+The system follows a two-layer architecture to separate model training from real-time inference.
+This design mirrors how large-scale ML systems are typically deployed, while keeping the implementation simple and reproducible.
+
+### Offline Training Layer
+- **Purpose:** Model training and feature extraction
+- **Tech:** Apache Spark (PySpark), Spark MLlib
+- **Role:** Implements tokenization, TF-IDF / HashingTF feature extraction and Logistic Regression training.
+- **Note:** In this repository, training is demonstrated on a benchmark dataset for clarity, though the pipeline is designed to scale using distributed processing.
+
+**File:** `spark_pipeline.py`
+
+### Online Inference Layer
+- **Purpose:** Low-latency sentiment prediction for user input
+- **Tech:** Scikit-Learn, Streamlit
+- **Role:** Loads trained artifacts and performs inference in milliseconds.
+- **Design Choice:** Inference is kept lightweight and inference-only; retraining is handled offline to avoid data leakage.
+
+**File:** `app.py`
 
 ---
 
