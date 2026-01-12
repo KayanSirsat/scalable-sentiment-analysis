@@ -9,10 +9,14 @@
 
 ---
 
-## 📖 Project Overview
-This project demonstrates an end-to-end **Machine Learning Pipeline** capable of processing unstructured customer feedback and classifying sentiment (Positive/Negative) in real-time. 
+# 📊 Scalable Customer Sentiment Analysis Pipeline
 
-The system is designed with a **Production-Grade Architecture** that separates the "Heavy Lifting" (Offline Training) from the "Fast Serving" (Online Inference).
+## Overview
+This project implements an end-to-end sentiment analysis pipeline for customer-like textual feedback.  
+The focus is on **robust baseline modeling, proper evaluation and low-latency inference**, rather than model complexity.
+
+A standard benchmark dataset (IMDb Reviews) is used as a **proxy for customer sentiment classification** to ensure reliable training and evaluation.
+
 
 ### 🏗️ Architecture Design
 To ensure both **scalability** for big data and **low latency** for end-users, this project utilizes a hybrid approach:
