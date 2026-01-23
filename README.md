@@ -49,22 +49,27 @@ The dataset is accessed programmatically using the Hugging Face `datasets` libra
 ---
 
 ## Project Structure
-
+```
+├── data/
+│ └── README.md # Notes on dataset handling (no raw data stored)
+│
 ├── src/
-│ ├── train.py # Offline training and artifact persistence
+│ ├── scalability/
+│ │ └── spark_pipeline.py # Conceptual PySpark scalability extension
+│ │
+│ ├── train.py # Offline model training and artifact persistence
 │ ├── evaluate.py # Reproducible evaluation using saved artifacts
-│ ├── inference.py # Inference-only prediction interface
+│ └── inference.py # Inference-only prediction interface
 │
 ├── app.py # Streamlit UI (presentation layer only)
-│
-├── scalability/
-│ └── spark_pipeline.py # Conceptual PySpark scalability extension
-│
-├── model.pkl # Trained model
+├── model.pkl # Trained Logistic Regression model
 ├── vectorizer.pkl # Trained TF-IDF vectorizer
-├── requirements.txt
-└── README.md
-
+│
+├── requirements.txt # Python dependencies
+├── runtime.txt # Runtime specification for deployment
+├── README.md # Project overview and documentation
+└── .gitignore
+```
 ---
 
 ## Training (`train.py`)
@@ -143,3 +148,4 @@ A conceptual PySpark pipeline is included under `scalability/` to illustrate how
 **Kayan Sirsat**  
 Bachelor of Engineering – Computer Engineering  
 Aspiring Master’s student in Computer Science (AI/ML)
+
