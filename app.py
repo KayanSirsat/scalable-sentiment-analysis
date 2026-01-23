@@ -1,5 +1,5 @@
 import streamlit as st
-from inference import SentimentPredictor
+from src.inference import SentimentPredictor
 
 # Page config
 
